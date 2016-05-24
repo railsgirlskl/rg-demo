@@ -7,7 +7,7 @@
 
 <p>
   <strong>File:</strong>
-  <%= @photo.file %>
+  <%= image_tag(@photo.file_url, width: 600) if @photo.file.present? %> 
 </p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
