@@ -1,11 +1,17 @@
-<h1>Listing photos</h1>
-
 <% @photos.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |photo| %>
       <div class="col-xs-4">
-        <%= image_tag photo.file_url, width: '100%' if photo.file.present? %>
-        <%= photo.description %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= link_to photo_path(photo) do %>
+              <%= image_tag photo.file_url, width: '100%' if photo.file.present? %>
+            <% end %>
+          </div>
+          <div class="panel-footer">
+            <%= photo.description %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
