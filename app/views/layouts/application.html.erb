@@ -19,6 +19,9 @@
         </button>
         <a class="navbar-brand" href="/">The Photo App</a>
       </div>
+      <p class="navbar-text navbar-right">
+        <%= link_to 'About', pages_about_path, class:'navbar-link' %>
+      </p>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to 'Photos', photos_path %></li>
