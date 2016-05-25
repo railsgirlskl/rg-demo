@@ -1,18 +1,22 @@
-<% @photos.in_groups_of(3) do |group| %>
-  <div class="row">
-    <% group.compact.each do |photo| %>
-      <div class="col-xs-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <%= link_to photo_path(photo) do %>
-              <%= image_tag photo.file_url, width: '100%' if photo.file.present? %>
-            <% end %>
-          </div>
-          <div class="panel-footer">
-            <%= photo.description %>
+<% if @photos.any? %>
+  <% @photos.in_groups_of(3) do |group| %>
+    <div class="row">
+      <% group.compact.each do |photo| %>
+        <div class="col-xs-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%= link_to photo_path(photo) do %>
+                <%= image_tag photo.file_url, width: '100%' if photo.file.present? %>
+              <% end %>
+            </div>
+            <div class="panel-footer">
+              <%= photo.description %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  No photos found. Add <%= link_to 'one', new_photo_path %>?
 <% end %>
